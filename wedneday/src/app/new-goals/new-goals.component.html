@@ -1,0 +1,38 @@
+<div class="container-fluid">
+    <form (ngSubmit) = "renderGoalToParent()" #taskForm= 'ngForm'>
+        <div>
+            <h2>Create a new task</h2>
+        </div>
+        <hr/>
+        <div class="form-group">
+            <label for="id">Your ID Goes here</label>
+            <input type="number" required class="form-control" id="id">
+        </div>
+        <div class="form-group">
+            <label for="name">Name Your Goal</label>
+            <input type="text" required class="form-control" id="name" [(ngModel)] = "newTasks.name" name="name" #name = 'ngModel'>
+            <div [hidden] = 'name.valid || name.pristine'>
+                <p class="alert alert-danger">Please enter valid name</p>
+            </div>
+            Displaying {{newTasks.name}}
+        </div>
+        <div class="form-group">
+            <label for="describe">Describe Your Goal</label>
+            <textarea rows="4" required class="form-control" id="describe" [(ngModel)] = 'newTasks.description' name="description" #description = 'ngModel'></textarea>
+            <div [hidden] = "description.valid || description.pristine">
+                <p class="alert alert-danger">Enter description</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="date">When will you be done?</label>
+            <input type="date" required class="form-control" id="date" [(ngModel)] = 'newTasks.completeDate' name="date" #date="ngModel">
+            <div [hidden] = 'date.valid || date.pristine'>
+                <p class="alert alert-danger">Please enter date</p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+    </div>
+    
+    
+    
