@@ -14,6 +14,7 @@ import { StrikethroughDirective } from './strikethrough.directive';
 import { FirstPipePipe } from './first-pipe.pipe';
 import { NewGoalsComponent } from './new-goals/new-goals.component';
 import { AboutComponent } from './about/about.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AboutComponent } from './about/about.component';
     StrikethroughDirective,
     FirstPipePipe,
     NewGoalsComponent,
-    AboutComponent
+    AboutComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
