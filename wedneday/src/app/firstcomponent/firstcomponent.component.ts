@@ -4,7 +4,8 @@ import { GoalService } from "../goalservice/goal.service";
 import { AlertService } from "../alert-service/alert.service";
 import { Quotes } from '../quotes';
 import { HttpClient } from "@angular/common/http";
-import { QuoteLoadService } from '../quote-service/quote-load.service'
+import { QuoteLoadService } from '../quote-service/quote-load.service';
+import { Router } from "@angular/router"
 
 @Component({
   selector: 'app-firstcomponent',
@@ -27,22 +28,24 @@ export class FirstcomponentComponent implements OnInit {
   }
 
 
-  showDescription(index){
-    this.posts[index].showDescription = !this.posts[index].showDescription
+  // showDescription(index){
+  //   this.posts[index].showDescription = !this.posts[index].showDescription
+  // }
+
+  goToUrl(id){
+    this.router.navigate(["/first",id ])
   }
 
-  spliceClickedTask(isComplete, index){
-    if(isComplete){
+  spliceClickedTask(index){
       let confirmation = confirm(`Are you sure you want to get rid  of ${this.posts[index].name}`);
       if(confirmation){
         this.posts.splice(index,1);
         this.alertService.alert("You have succesfully deleted the goal")
-      }
     }
     
   }
 
-  constructor(goalService: GoalService, alertService:AlertService, private http:HttpClient, private quoteService: QuoteLoadService) {
+  constructor(goalService: GoalService, alertService:AlertService, private http:HttpClient, private quoteService: QuoteLoadService, private router:Router) {
       this.posts = goalService.getGoals();
       this.alertService = alertService;
    }

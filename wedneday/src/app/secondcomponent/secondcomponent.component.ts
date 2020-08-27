@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Goals } from "../goals";
+import { GoalService } from "../goalservice/goal.service";
+import { ActivatedRoute, ParamMap } from "@angular/router"
 
 @Component({
   selector: 'app-secondcomponent',
@@ -8,17 +10,24 @@ import { Goals } from "../goals";
 })
 export class SecondcomponentComponent implements OnInit {
 
-  @Input() post:Goals;
-  @Output() isComplete = new EventEmitter<boolean>();
 
-  doneWith(itsComplete: boolean){
-    this.isComplete.emit(itsComplete)
+  post:Goals;
+
+  // @Input() post:Goals;
+  // @Output() isComplete = new EventEmitter<boolean>();
+
+  // doneWith(itsComplete: boolean){
+  //   this.isComplete.emit(itsComplete)
     
-  }
-  
-  constructor() { }
+  // }
 
-  ngOnInit(): void {
+
+  
+  constructor(private route:ActivatedRoute, private service:GoalService) { }
+
+  ngOnInit(){
+    let id = this.route.snapshot.paramMap.get("id");
+    this.service.getGoal(id)
   }
 
 }

@@ -2,12 +2,11 @@
     <div class="col-md-6 col-lg-6">
         <div class="container" *ngFor = "let post of posts; let i = index;">
             <div class="section">
-                <h2 appStrikethrough><i>{{post.id}}</i> {{post.name}}</h2>
-                <p>due on {{post.completeDate | date|uppercase}} you have {{post.completeDate | firstPipe}} days to complete this task</p>
+                <h6  id={{i}} appStrikethrough><i>{{post.id}}</i> {{post.name}} due on {{post.completeDate | date|uppercase}} you have {{post.completeDate | firstPipe}} days to complete this task</h6>
             </div>
-            <button (click)="showDescription(i)" class="btn btn-primary" >details</button>
+            <button (click)='goToUrl(post.id)' class="btn btn-primary" >details</button>
             <div>
-            <app-secondcomponent *ngIf="post.showDescription" [post] = "post" (isComplete) = "spliceClickedTask($event,i)"></app-secondcomponent>
+            <button class="btn btn-outline-danger" (click) = "spliceClickedTask(i)"></button>
             </div>
            </div>
     </div>

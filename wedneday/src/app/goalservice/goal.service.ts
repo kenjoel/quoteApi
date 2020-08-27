@@ -15,6 +15,19 @@ export class GoalService {
     new Goals(5,'invest 9/10','Gold escapes anyman who trusts his own inexperience in its investment', new Date(2017,8,6)),
     new Goals(6,'seek advice','Gold escapes anyman who trusts, scammers and tricksters or conmen in its investment', new Date(2020,2,5)),
    ];
+
+
+   getGoal(id){
+    for(let goal of Goals){
+      if(goal.id = id){
+        return goal
+      }
+    }
+  }
+  
+
+
+
   getGoals(){
 
     return this.goals

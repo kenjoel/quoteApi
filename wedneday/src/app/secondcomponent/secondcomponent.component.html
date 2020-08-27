@@ -1,2 +1,18 @@
-<li>{{post.description}}</li>
-<button (click)="doneWith(true)">Done</button>
+<div class="row">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-title">
+                <h4>{{post.description}}</h4>
+            </div>
+            <div class="card-body">
+                <p>This goal will be complete by {{post.completeDate|date}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        
+    </div>
+</div>
